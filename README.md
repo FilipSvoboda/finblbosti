@@ -1,0 +1,2 @@
+# finblbosti
+Ruzne financni blbosti :)
