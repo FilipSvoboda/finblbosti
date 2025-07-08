@@ -1,3 +1,5 @@
 matplotlib
 pandas
 streamlit
+dotmap
+streamlit_js_eval

@@ -1,0 +1,29 @@
+# 💸 Finanční kalkulačky
+
+Vítej na stránce s interaktivními finančními kalkulačkami, které ti pomohou lépe pochopit, plánovat a řídit osobní finance. Ať už řešíš investice, důchod, výdaje nebo spoření, najdeš tady nástroje, které ti to usnadní.
+
+---
+
+## Co tu najdeš?
+
+- 📈 **Kalkulačku investic** – spočítej, jak se ti zhodnotí peníze v čase  
+- 💰 **Plánovač důchodu** – zjisti, kdy můžeš přestat pracovat  
+- 🏦 **Analýzu měsíčního rozpočtu** – najdi prostor na úspory nebo investice  
+- 🧮 A další nástroje, které postupně přibývají...
+
+---
+
+## Proč to funguje?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id quam nec ipsum gravida cursus. Morbi tincidunt sem nec libero tempor, nec viverra ipsum ultricies.
+
+Aliquam eget eros at sapien bibendum feugiat. Suspendisse id nulla vel nisl feugiat posuere. Vivamus eu leo lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+---
+
+## Jak začít?
+
+Vyber kalkulačku z menu vlevo a postupuj podle pokynů. Výsledky se aktualizují automaticky podle zadaných hodnot.
+
+> ℹ️ Tip: Pokud používáš mobil, rozvržení se přizpůsobí tak, aby bylo čitelné a přehledné.
+
