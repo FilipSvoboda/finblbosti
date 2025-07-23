@@ -23,4 +23,6 @@ def input_money(label, default=0):
         st.warning(f"Zadaná částka v poli '{label}' není číslo!")
         return 0
 
+def vypis_kc(castka):
+    return f"{castka:,.0f} Kč".replace(",", " ")
 

@@ -9,18 +9,19 @@ import dotmap
 
 
 def uvod():
-    st.title("Kolik budu mit kdyz se moje investovana castka zhodnoti ")
+    st.title("Jaká bude finální hodnota mojí investice?")
 
     st.markdown("""
-        Tato kalkulačka ti pomůže odhadnout, kolik penez budes mit kdyz se tvoje investice bude zhodnocovat urokem % p.a. Kalkulacka predpoklada ze se uroky pripisuji k investici mesicne.
+        
+        Tato kalkulačka ti pomůže odhadnout, jakou hodnotu bude mít Tvoje investovaná částka při zvolené výši procentuálního zhodnocení a po uplynutí Tvého investičního horizontu. 
 
-        ### Jak to funguje
+        ### do kalkulačky zadáš:
+        - Jednorázovou částku, kterou máš v plánu investovat (Počáteční investice)
+        - Roční procentuální zhodnocení (Roční úroková sazba = o kolik % p.a. se úročí Tvoje investice)
+        - Délku investice (Počet let, během kterých plánuješ nechat svoji investici zhodnocovat, tzn. Tvůj investiční horizont.)
 
-        Zadáš:
-        - **velikost investice**
-        - **rocni zhodnoceni % p.a.**
-        - **Delka investice (pocet let)**
 
+        
         """)
 
 
@@ -28,14 +29,14 @@ def nacist_vstupy():
     v = dotmap.DotMap()
 
     v.investice = tools.input_money(
-        "Naklady na mesic tveho zivota v aktualnich cenach", 50000
+        "Jednorázově vložená částka Kč", 50000
     )
 
     v.rocni_zhodnoceni = st.number_input(
-        "Prumerne rocni zhodnoceni (% p.a.)", value=8) / 100
+        "Roční procentuální zhodnocení %", value=8) / 100
 
     v.delka_investice = st.number_input(
-        "Delka investice v letech", min_value=1, value=10
+        "Délka investice let", min_value=1, value=10
     )
 
     return v
@@ -58,12 +59,23 @@ def vypocet(vstupy):
     df.loc[0, "hodnota_investice"] = hodnota_investice
 
     for rok in roky:
-        for i in range(12):
-            hodnota_investice += hodnota_investice * (vstupy.rocni_zhodnoceni / 12)
+        hodnota_investice += (hodnota_investice * vstupy.rocni_zhodnoceni)
         df.loc[rok, "hodnota_investice"] = hodnota_investice
         
-    return df
+    return df, hodnota_investice
 
+
+def popis_vysledku(hodnota):
+    st.markdown(f"""
+
+### Výsledek
+**Finální hodnota Tvé investice je {tools.vypis_kc(hodnota)}**
+
+**TIP:**
+
+Pokud je Tvým cílem vyšší částka, potřebuješ se k ní proinvestovat jinak a podniknout jiné kroky. To je možné tak, že navýšíš jeden nebo více ze zadaných parametrů. Můžeš vložit vyšší jednorázovou částku, a/nebo zvolit jiný investiční nástroj s vyšším ročním procentuálním zhodnocením, a/nebo prodloužit svůj investiční horizont. Zkus si do kalkulačky zadat různé varianty, které pro Tebe přicházejí v úvahu a určitě najdeš nějaké řešení, které bude vyhovovat Tvým individuálním potřebám.
+"""
+    )
 
 def vykreslit_graf(vstupy, df):
     st.write("Graf vývoje hodnoty investice")
@@ -102,7 +114,8 @@ def vypsat_tabulku(vstupy, df):
 def main():
     uvod()
     vstupy = nacist_vstupy()
-    df = vypocet(vstupy)
+    df, vysledna_hodnota = vypocet(vstupy)
+    popis_vysledku(vysledna_hodnota)
     vykreslit_graf(vstupy, df)
     vypsat_tabulku(vstupy, df)
 
